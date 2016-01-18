@@ -1,0 +1,56 @@
+<div ng-app="distributeApp">
+	<div class="jumbotron">
+		<p>직원관리</p>
+		<button class="btn btn-primary" ng-controller="EmpCtrl" ng-click="addEmp()">
+		<i class="glyphicon glyphicon-plus"></i>직원추가
+		</button>
+	</div>
+</div>
+
+<div ng-app="distributeApp" class="table-container"
+	ng-controller="EmpCtrl as mc">
+	<table class="table table-striped" st-pipe="mc.callServer"
+		st-table="mc.displayed">
+		<thead>
+			<tr>
+				<th st-sort="id" st-skip-natural="true">아이디</th>
+				<th st-sort="seq" st-skip-natural="true">직원번호</th>
+				<th st-sort="level" st-skip-natural="true">직급</th>
+                <th st-sort="name" st-skip-natural="true">이름</th>
+                <th st-sort="phone" st-skip-natural="true">전화번호</th>
+                <th st-sort="email" st-skip-natural="true">이메일</th>
+				<th>수정</th>
+				<th>삭제</th>
+			</tr>
+		</thead>
+		<tbody ng-show="!mc.isLoading">
+			<tr ng-repeat="row in mc.displayed">
+				<td>{{row.id}}</td>
+				<td>{{row.seq}}</td>
+				<td>{{row.level}}</td>
+                <td>{{row.name}}</td>
+                <td>{{row.phone}}</td>
+                <td>{{row.email}}</td>
+				<td>
+					<button type="button" ng-click="updateEmp(row)"
+						class="btn btn-sm btn-primary">
+						<i class="glyphicon glyphicon-edit" title="수정"></i>
+					</button>
+				</td>
+				<td>
+					<button type="button" ng-click="deleteEmp(row)"
+						class="btn btn-sm btn-danger">
+						<i class="glyphicon glyphicon-remove-circle" title="삭제"></i>
+					</button>
+				</td>
+			</tr>
+		</tbody>
+
+		<tfoot>
+			<tr>
+				<td class="text-center" st-pagination="" st-items-by-page="10"
+					colspan="8"></td>
+			</tr>
+		</tfoot>
+	</table>
+</div>

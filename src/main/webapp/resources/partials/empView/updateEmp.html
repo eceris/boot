@@ -1,0 +1,45 @@
+
+<div class="modal-content">
+	<div class="modal-header label-primary">
+		<button type="button" class="close" data-dismiss="modal" ng-click="cancel()">
+			<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+		</button>
+		
+		<h4 class="modal-title">
+			<span style="color: white"><span class="glyphicon glyphicon-pencil">직원정보수정</span></span>
+		</h4>
+	</div>
+
+	<div class="modal-body">
+		<div class="form-group">
+			<label>직원번호 : {{employee.id}}</label>
+		</div>
+		<div class="form-group">
+			<label>직원번호 : {{employee.seq}}</label>
+			<input type="text" class="form-control" ng-model="seq" ng-init="seq=employee.seq" placeholder="">
+		</div>
+		<div class="form-group">
+			<label>직급 : {{employee.level}}</label>
+			<input type="text" class="form-control" ng-model="level" ng-init="level=employee.level" placeholder="">
+		</div>
+		<div class="form-group">
+			<label>이름 : {{employee.name}}</label>
+			<input type="text" class="form-control" ng-model="name" ng-init="name=employee.name" placeholder="">
+		</div>
+        <div class="form-group">
+            <label>전화번호 : {{employee.phone}}</label>
+            <input type="text" class="form-control" ng-model="phone" ng-init="phone=employee.phone" placeholder="">
+        </div>
+        
+        <div class="form-group">
+            <label>email : {{employee.email}}</label>
+            <input type="text" class="form-control" ng-model="email" ng-init="email=employee.email" placeholder="">
+        </div>
+	</div>
+
+	<div class="modal-footer">
+		<button type="button" class="btn btn-default" data-dismiss="modal"
+			ng-click="cancel()">취소</button>
+		<button type="button" class="btn btn-primary" ng-click="updateEmp(employee.id, seq, level, name, phone, email)">수정</button>
+	</div>
+</div>
